@@ -1,6 +1,8 @@
-# Node modules
+# Ignore node modules
 node_modules/
-npm-debug.log
-bin
-# Environment variables
-.venv
+.venv/
+myvenv/
+*.log
+db.sqlite3
+__pycache__/
+migrations/
