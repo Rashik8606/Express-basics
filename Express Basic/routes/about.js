@@ -11,6 +11,8 @@ router.get('/',(req,res,next) => {
         'Rashik',
         'Sarath'
     ]
-    res.render('about',{value : 'I am about page...!',namelist:namelist})
+
+    const value = {name : 'Rashik',admin : true }
+    res.render('about',{value : 'I am about page...!',namelist:namelist,value:value})
 })
 module.exports = router

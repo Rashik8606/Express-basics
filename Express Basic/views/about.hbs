@@ -2,3 +2,8 @@
 {{#each namelist}}
 <h2>{{this}}</h2>
 {{/each}}
+{{#if value.admin }}
+<h2>This is Admin User</h2>
+{{else}}
+<h2>This is Normal User</h2>
+{{/if}}
