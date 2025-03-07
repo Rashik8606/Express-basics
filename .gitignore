@@ -1,0 +1,27 @@
+# Ignore system files
+*.log
+*.dat
+*.ini
+
+# Ignore Windows system folders
+Application Data/
+Cookies/
+Desktop.ini
+Downloads/
+Favorites/
+Links/
+Music/
+NTUSER.DAT*
+OneDrive/
+Pictures/
+Saved Games/
+Searches/
+Videos/
+
+# Ignore VS Code settings
+.vscode/
+
+# Ignore Node.js dependencies
+node_modules/
+package-lock.json
+
