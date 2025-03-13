@@ -1,22 +1,82 @@
-<form action="/submit" method="post">
-  <div class="mb-3">
-    <label for="exampleInputname" class="form-label">Name</label>
-    <input type="text" class="form-control" name="name" id="exampleInputname" >
-    <div id="emailHelp" class="form-text"></div>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputage" class="form-label">Age</label>
-    <input type="text" class="form-control" name="age" id="exampleInputage" >
-    <div id="emailHelp" class="form-text"></div>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputpalce" class="form-label">Place</label>
-    <input type="text" class="form-control" name="place" id="exampleInputpalce">
-    <div id="emailHelp" class="form-text"></div>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" name="password" id="exampleInputPassword1">
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="stylesheets/style.css">
+  <script src="javascripts/home.js"></script>
+  <title>Home page</title>
+</head>
+<body>
+
+    <section>
+        <div class="wrapper">
+
+	<h2><strong>Movies Category<span>( 4 )</span></strong></h2>
+
+	<div class="cards">
+
+		<figure class="card">
+
+			<img src="https://i.ibb.co/dpDJZ2b/1.jpg" />
+
+			<figcaption>Dota 2</figcaption>
+
+		</figure>
+
+		<figure class="card">
+
+			<img src="https://i.ibb.co/X7nQxgj/2.jpg" />
+
+			<figcaption>Stick Fight</figcaption>
+
+		</figure>
+
+		<figure class="card">
+
+			<img src="https://i.ibb.co/FqTvB96/3.jpg" />
+
+			<figcaption>Minion Masters</figcaption>
+
+		</figure>
+
+		<figure class="card">
+
+			<img src="https://i.ibb.co/4P0CDKX/4.jpg" />
+
+			<figcaption>KoseBoz!</figcaption>
+
+		</figure>
+
+	</div>
+
+	<h2><strong>What's new?</strong></h2>
+	
+	<div class="news">
+		{{#each moviesList}}
+		<figure class="article">
+
+			<img src="{{this.moviepic}}" />
+				
+			<figcaption>	
+				
+				<h3>{{this.title}}</h3>
+					
+				<p>
+
+					{{this.discription}}
+
+				</p>
+				
+			</figcaption>
+			
+		</figure>
+		
+	{{/each}}
+	</div>
+	
+</div>      
+    </section>
+</body>
+</html>

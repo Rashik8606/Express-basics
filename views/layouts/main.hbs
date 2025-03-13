@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="stylesheets/style.css">
+     <script src="javascripts/home.js"></script>
+  <title>{{title}}</title>
+</head>
+<body>
+    {{#if admin}}
+      {{> admin-header}}
+    {{else}}
+      {{> user-header}}
+      {{{body}}}
+    {{/if}}
+
+    <!-- This will render the dynamic content -->
+</body>
+</html>
