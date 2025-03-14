@@ -1,82 +1,123 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <link rel="stylesheet" href="stylesheets/style.css">
-  <script src="javascripts/home.js"></script>
-  <title>Home page</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="stylesheets/style.css" />
+    <script src="javascripts/home.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <title>Home page</title>
+  </head>
+  <body>
 
     <section>
-        <div class="wrapper">
+      <div class="wrapper">
 
-	<h2><strong>Movies Category<span>( 4 )</span></strong></h2>
+        <h2><strong>Movies Category<span>( 4 )</span></strong></h2>
 
-	<div class="cards">
+        <div class="cards">
 
-		<figure class="card">
+          <figure class="card">
 
-			<img src="https://i.ibb.co/dpDJZ2b/1.jpg" />
+            <img src="https://i.ibb.co/dpDJZ2b/1.jpg" />
 
-			<figcaption>Dota 2</figcaption>
+            <figcaption>Dota 2</figcaption>
 
-		</figure>
+          </figure>
 
-		<figure class="card">
+          <figure class="card">
 
-			<img src="https://i.ibb.co/X7nQxgj/2.jpg" />
+            <img src="https://i.ibb.co/X7nQxgj/2.jpg" />
 
-			<figcaption>Stick Fight</figcaption>
+            <figcaption>Stick Fight</figcaption>
 
-		</figure>
+          </figure>
 
-		<figure class="card">
+          <figure class="card">
 
-			<img src="https://i.ibb.co/FqTvB96/3.jpg" />
+            <img src="https://i.ibb.co/FqTvB96/3.jpg" />
 
-			<figcaption>Minion Masters</figcaption>
+            <figcaption>Minion Masters</figcaption>
 
-		</figure>
+          </figure>
 
-		<figure class="card">
+          <figure class="card">
 
-			<img src="https://i.ibb.co/4P0CDKX/4.jpg" />
+            <img src="https://i.ibb.co/4P0CDKX/4.jpg" />
 
-			<figcaption>KoseBoz!</figcaption>
+            <figcaption>KoseBoz!</figcaption>
 
-		</figure>
+          </figure>
 
-	</div>
+        </div>
 
-	<h2><strong>What's new?</strong></h2>
-	
-	<div class="news">
-		{{#each moviesList}}
-		<figure class="article">
+        <h2><strong>What's new?</strong></h2>
 
-			<img src="{{this.moviepic}}" />
-				
-			<figcaption>	
-				
-				<h3>{{this.title}}</h3>
-					
-				<p>
+        <div class="news">
+          {{#each movies}}
+            <figure class="article">
 
-					{{this.discription}}
+              <img
+                src="https://image.tmdb.org/t/p/w500{{this.poster_path}}"
+                alt="{{this.title}}"
+              />
 
-				</p>
-				
-			</figcaption>
-			
-		</figure>
-		
-	{{/each}}
-	</div>
-	
-</div>      
+              <figcaption>
+
+                <h3>{{this.title}}</h3>
+                <small style="color:darkgrey;">{{this.genre_ids}}</small>
+                <p>
+
+                  {{this.overview}}
+
+                </p>
+
+              </figcaption>
+
+            </figure>
+
+          {{/each}}
+        </div>
+
+      </div>
     </section>
-</body>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <h2>OnlineMOV</h2>
+            <p>Your best platform for movies & entertainment.</p>
+          </div>
+
+          <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Movies</a></li>
+              <li><a href="#">Categories</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-social">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 OnlineMOV. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
