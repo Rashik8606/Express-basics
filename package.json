@@ -3,7 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "compile:pug": "pug views/ --out public/",
+    "compile:scss": "sass scss/style.scss public/stylesheets/style.css",
+    "watch:pug": "nodemon --watch views -e pug --exec 'npm run compile:pug'",
+    "watch:scss": "sass --watch scss/style.scss:public/stylesheets/style.css",
+    "dev": "npm run watch:pug & npm run watch:scss"
   },
   "dependencies": {
     "axios": "^1.8.3",
@@ -16,7 +21,17 @@
     "hbs": "~4.0.4",
     "http-errors": "~1.6.3",
     "mongodb": "4.1",
-    "morgan": "~1.9.1",
-    "nodemon": "^3.1.9"
-  }
+    "morgan": "~1.9.1"
+  },
+  "main": "app.js",
+  "devDependencies": {
+    "nodemon": "^3.1.9",
+    "pug": "^3.0.3",
+    "pug-cli": "^1.0.0-alpha6",
+    "sass": "^1.85.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }

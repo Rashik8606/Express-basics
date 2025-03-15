@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="stylesheets/style.css" />
-    <script src="javascripts/home.js"></script>
+    <script src="/public/javascripts/style.js"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -84,6 +84,54 @@
 
       </div>
     </section>
+
+
+   <ul class="pagination" id="pagination"></ul>
+
+
+<script>
+    const pagination = document.getElementById('pagination');
+        let currentPage = 1;
+        const totalPages = 10; // Change this dynamically based on data count
+        
+        function createPagination() {
+            pagination.innerHTML = '';
+            
+            // Previous button
+            const prevLi = document.createElement('li');
+            prevLi.classList.add('prev');
+            if (currentPage === 1) prevLi.classList.add('disabled');
+            prevLi.innerHTML = '<a href="#">&laquo; Prev</a>';
+            prevLi.addEventListener('click', () => changePage(currentPage - 1));
+            pagination.appendChild(prevLi);
+            
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                const pageLi = document.createElement('li');
+                if (i === currentPage) pageLi.classList.add('active');
+                pageLi.innerHTML = `<a href="#">${i}</a>`;
+                pageLi.addEventListener('click', () => changePage(i));
+                pagination.appendChild(pageLi);
+            }
+            
+            // Next button
+            const nextLi = document.createElement('li');
+            nextLi.classList.add('next');
+            if (currentPage === totalPages) nextLi.classList.add('disabled');
+            nextLi.innerHTML = '<a href="#">Next &raquo;</a>';
+            nextLi.addEventListener('click', () => changePage(currentPage + 1));
+            pagination.appendChild(nextLi);
+        }
+        
+        function changePage(page) {
+            if (page < 1 || page > totalPages) return;
+            currentPage = page;
+            createPagination();
+        }
+        
+        createPagination();
+</script>
+
     <footer class="footer">
       <div class="container">
         <div class="footer-content">
