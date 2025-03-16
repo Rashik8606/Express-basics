@@ -85,52 +85,83 @@
       </div>
     </section>
 
+ <div class="pagination">
+    {{#if (gt currentPage 1)}}
+        <a href="/?page=1" class="btn first">« First</a>
+        <a href="/?page={{sub currentPage 1}}" class="btn prev">‹ Prev</a>
+    {{/if}}
 
-   <ul class="pagination" id="pagination"></ul>
+    {{#each (range (sub currentPage 2) (add currentPage 2))}}
+        {{#if (and (gt this 0) (lte this ../totalPages))}}
+            <a href="/?page={{this}}" class="btn {{#if (eq this ../currentPage)}} active{{/if}}">{{this}}</a>
+        {{/if}}
+    {{/each}}
+
+    {{#if (lt currentPage totalPages)}}
+        <a href="/?page={{add currentPage 1}}" class="btn next">Next ›</a>
+        <a href="/?page={{totalPages}}" class="btn last">Last »</a>
+    {{/if}}
+</div>
 
 
-<script>
-    const pagination = document.getElementById('pagination');
-        let currentPage = 1;
-        const totalPages = 10; // Change this dynamically based on data count
-        
-        function createPagination() {
-            pagination.innerHTML = '';
-            
-            // Previous button
-            const prevLi = document.createElement('li');
-            prevLi.classList.add('prev');
-            if (currentPage === 1) prevLi.classList.add('disabled');
-            prevLi.innerHTML = '<a href="#">&laquo; Prev</a>';
-            prevLi.addEventListener('click', () => changePage(currentPage - 1));
-            pagination.appendChild(prevLi);
-            
-            // Page numbers
-            for (let i = 1; i <= totalPages; i++) {
-                const pageLi = document.createElement('li');
-                if (i === currentPage) pageLi.classList.add('active');
-                pageLi.innerHTML = `<a href="#">${i}</a>`;
-                pageLi.addEventListener('click', () => changePage(i));
-                pagination.appendChild(pageLi);
-            }
-            
-            // Next button
-            const nextLi = document.createElement('li');
-            nextLi.classList.add('next');
-            if (currentPage === totalPages) nextLi.classList.add('disabled');
-            nextLi.innerHTML = '<a href="#">Next &raquo;</a>';
-            nextLi.addEventListener('click', () => changePage(currentPage + 1));
-            pagination.appendChild(nextLi);
-        }
-        
-        function changePage(page) {
-            if (page < 1 || page > totalPages) return;
-            currentPage = page;
-            createPagination();
-        }
-        
-        createPagination();
-</script>
+
+<style>
+ .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px; /* Space between buttons */
+    margin: 30px 0;
+    padding: 10px;
+}
+
+.pagination .btn {
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #fff;
+    background-color: #333; /* Unified color */
+    border-radius: 6px;
+    transition: all 0.3s ease-in-out;
+    border: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.pagination .btn:hover {
+    background-color: #555; /* Slightly lighter on hover */
+}
+
+.pagination .active {
+    background-color: #ff6347 !important; /* Highlight current page */
+    font-weight: bold;
+    pointer-events: none;
+     /* Slightly larger effect */
+}
+
+/* First & Last Buttons */
+.pagination .first, .pagination .last {
+    background-color: #1e88e5;
+}
+
+.pagination .first:hover, .pagination .last:hover {
+    background-color: #1565c0;
+}
+
+/* Previous & Next Buttons */
+.pagination .prev, .pagination .next {
+    background-color: #ff9800;
+}
+
+.pagination .prev:hover, .pagination .next:hover {
+    background-color: #e65100;
+}
+
+
+
+</style>
+
 
     <footer class="footer">
       <div class="container">

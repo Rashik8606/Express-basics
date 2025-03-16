@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const exphbs = require('express-handlebars');
+const exphbs = require("express-handlebars"); 
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -11,12 +11,30 @@ var usersRouter = require('./routes/users');
 var app = express();
 
 
-app.engine('hbs', exphbs.engine({ 
-  extname: '.hbs', 
-  defaultLayout: 'main', 
-  layoutsDir: __dirname + '/views/layouts/',
-  partialsDir:__dirname+'/views/partials/'
-}));
+const hbs = exphbs.create({
+  extname: ".hbs",
+  defaultLayout: "main",
+  layoutsDir: __dirname + "/views/layouts/",
+  partialsDir: __dirname + "/views/partials/",
+  helpers: {
+    add: (a, b) => a + b,
+    sub: (a, b) => a - b,
+    eq: (a, b) => a === b,
+    gt: (a, b) => a > b,
+    lt: (a, b) => a < b, 
+    lte: (a, b) => a <= b,
+    and: (a, b) => a && b,
+    range: (start, end) => {
+      let range = [];
+      for (let i = start; i <= end; i++) {
+        range.push(i);
+      }
+      return range;
+    }
+  }
+});
+
+app.engine('hbs', hbs.engine);  // Use 'hbs' instance with helpers
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
 
