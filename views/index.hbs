@@ -89,6 +89,9 @@
     {{#if (gt currentPage 1)}}
         <a href="/?page=1" class="btn first">« First</a>
         <a href="/?page={{sub currentPage 1}}" class="btn prev">‹ Prev</a>
+    {{else}}
+        <span class="btn disabled">« First</span>
+        <span class="btn disabled">‹ Prev</span>
     {{/if}}
 
     {{#each (range (sub currentPage 2) (add currentPage 2))}}
@@ -100,62 +103,108 @@
     {{#if (lt currentPage totalPages)}}
         <a href="/?page={{add currentPage 1}}" class="btn next">Next ›</a>
         <a href="/?page={{totalPages}}" class="btn last">Last »</a>
+    {{else}}
+        <span class="btn disabled">Next ›</span>
+        <span class="btn disabled">Last »</span>
     {{/if}}
 </div>
 
 
 
 <style>
- .pagination {
+.pagination {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 8px; /* Space between buttons */
+    flex-wrap: wrap;
+    gap: 10px;
     margin: 30px 0;
     padding: 10px;
 }
 
 .pagination .btn {
     display: inline-block;
-    padding: 10px 15px;
+    padding: 12px 18px;
     text-decoration: none;
     font-size: 16px;
+    font-weight: 600;
     color: #fff;
-    background-color: #333; /* Unified color */
-    border-radius: 6px;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    border-radius: 8px;
     transition: all 0.3s ease-in-out;
-    border: none;
+    border: 2px solid transparent; /* Prevents resizing */
     cursor: pointer;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box; /* Prevents size changes */
 }
 
 .pagination .btn:hover {
-    background-color: #555; /* Slightly lighter on hover */
+    background: linear-gradient(135deg, #2a5298, #1e3c72);
+    transform: none !important; /* Prevents enlargement */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.pagination .btn:active,
+.pagination .btn:focus {
+    transform: none !important;
+    scale: 1 !important;
+    box-shadow: none !important;
+    outline: none !important;
+    border: none !important;
 }
 
 .pagination .active {
-    background-color: #ff6347 !important; /* Highlight current page */
     font-weight: bold;
     pointer-events: none;
-     /* Slightly larger effect */
+    transform: none !important;
+    scale: 1 !important;
+    width: auto !important;  /* Prevent extra width */
+    height: auto !important; /* Prevent extra height */
+    display: inline-flex; /* Ensures content stays centered */
+    align-items: center;
+    justify-content: center;
+    padding: 12px 18px; /* Keep padding consistent */
+    box-sizing: border-box; /* Prevents unwanted size increase */
+
+}
+
+/* Disabled Buttons */
+.pagination .disabled {
+    background: #bbb;
+    color: #666;
+    pointer-events: none;
+    cursor: default;
 }
 
 /* First & Last Buttons */
 .pagination .first, .pagination .last {
-    background-color: #1e88e5;
+    background: linear-gradient(135deg, #1e88e5, #1976d2);
 }
 
 .pagination .first:hover, .pagination .last:hover {
-    background-color: #1565c0;
+    background: linear-gradient(135deg, #1976d2, #1e88e5);
 }
 
 /* Previous & Next Buttons */
 .pagination .prev, .pagination .next {
-    background-color: #ff9800;
+    background: linear-gradient(135deg, #ff9800, #e65100);
 }
 
 .pagination .prev:hover, .pagination .next:hover {
-    background-color: #e65100;
+    background: linear-gradient(135deg, #e65100, #ff9800);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .pagination {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+    
+    .pagination .btn {
+        padding: 10px 14px;
+        font-size: 14px;
+    }
 }
 
 

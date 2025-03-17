@@ -8,13 +8,16 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="stylesheets/style.css" />
   </head>
   <body>
     <header>
       <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <!-- Container wrapper -->
         <div class="container-fluid">
           <!-- Navbar brand -->
@@ -232,7 +235,7 @@
                   href="#"
                   id="navbarDropdown"
                   role="button"
-                  data-mdb-dropdown-init
+                  data-bs-toggle = "dropdown"
                   aria-expanded="false"
                 >
                   <img
@@ -282,13 +285,10 @@
     </header>
 
     <!-- Bootstrap Bundle (includes Popper.js) -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-    ></script>
 
     <!-- jQuery (only if required) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="javascripts/home.js"></script>
+
 
   </body>
 </html>
