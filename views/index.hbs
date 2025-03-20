@@ -53,32 +53,21 @@
           </figure>
 
         </div>
-
         <h2><strong>What's new?</strong></h2>
 
         <div class="news">
           {{#each movies}}
             <figure class="article">
-
-              <img
-                src="https://image.tmdb.org/t/p/w500{{this.poster_path}}"
-                alt="{{this.title}}"
-              />
-
-              <figcaption>
-
-                <h3>{{this.title}}</h3>
-                <small style="color:darkgrey;">{{this.genre_ids}}</small>
-                <p>
-
-                  {{this.overview}}
-
-                </p>
-
-              </figcaption>
-
+              <a href="/watch/{{this.id}}" class="movie-link">
+                <img src="https://image.tmdb.org/t/p/w500{{this.poster_path}}" alt="{{this.title}}" />
+                <figcaption>
+        <h3>{{this.title}}</h3>  <!-- Ensure this is inside figcaption -->
+        <small style="color:darkgrey;">Genres: {{this.genre_ids}}</small>
+        <p>{{this.overview}}</p>
+      </figcaption>
+              </a>
+              <h3>{{this.title}}</h3>
             </figure>
-
           {{/each}}
         </div>
 
@@ -112,100 +101,6 @@
 
 
 <style>
-.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 30px 0;
-    padding: 10px;
-}
-
-.pagination .btn {
-    display: inline-block;
-    padding: 12px 18px;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 600;
-    color: #fff;
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
-    border-radius: 8px;
-    transition: all 0.3s ease-in-out;
-    border: 2px solid transparent; /* Prevents resizing */
-    cursor: pointer;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-    box-sizing: border-box; /* Prevents size changes */
-}
-
-.pagination .btn:hover {
-    background: linear-gradient(135deg, #2a5298, #1e3c72);
-    transform: none !important; /* Prevents enlargement */
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.pagination .btn:active,
-.pagination .btn:focus {
-    transform: none !important;
-    scale: 1 !important;
-    box-shadow: none !important;
-    outline: none !important;
-    border: none !important;
-}
-
-.pagination .active {
-    font-weight: bold;
-    pointer-events: none;
-    transform: none !important;
-    scale: 1 !important;
-    width: auto !important;  /* Prevent extra width */
-    height: auto !important; /* Prevent extra height */
-    display: inline-flex; /* Ensures content stays centered */
-    align-items: center;
-    justify-content: center;
-    padding: 12px 18px; /* Keep padding consistent */
-    box-sizing: border-box; /* Prevents unwanted size increase */
-
-}
-
-/* Disabled Buttons */
-.pagination .disabled {
-    background: #bbb;
-    color: #666;
-    pointer-events: none;
-    cursor: default;
-}
-
-/* First & Last Buttons */
-.pagination .first, .pagination .last {
-    background: linear-gradient(135deg, #1e88e5, #1976d2);
-}
-
-.pagination .first:hover, .pagination .last:hover {
-    background: linear-gradient(135deg, #1976d2, #1e88e5);
-}
-
-/* Previous & Next Buttons */
-.pagination .prev, .pagination .next {
-    background: linear-gradient(135deg, #ff9800, #e65100);
-}
-
-.pagination .prev:hover, .pagination .next:hover {
-    background: linear-gradient(135deg, #e65100, #ff9800);
-}
-
-/* Responsive Design */
-@media (max-width: 600px) {
-    .pagination {
-        flex-wrap: wrap;
-        gap: 6px;
-    }
-    
-    .pagination .btn {
-        padding: 10px 14px;
-        font-size: 14px;
-    }
-}
 
 
 

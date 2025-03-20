@@ -7,6 +7,7 @@ const exphbs = require("express-handlebars");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var watchRouter = require('./routes/watching_page')
 
 var app = express();
 
@@ -47,6 +48,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/watch',watchRouter)
 
 // catch 404 and forward to error handle  r
 app.use(function(req, res, next) {

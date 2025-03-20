@@ -1,3 +1,22 @@
+.content-wrapper {
+  margin-top: 80px; /* Adjust this based on your navbar height */
+  padding: 20px;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 1000;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+@import url(https://fonts.googleapis.com/css?family=Tinos);
+
+
+
 .abs,
 h2:after,
 .cards .card figcaption,
@@ -405,3 +424,97 @@ h2 {
   left: 0;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 30px 0;
+  padding: 10px;
+}
+
+.pagination .btn {
+  display: inline-block;
+  padding: 12px 18px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+  border: 2px solid transparent; /* Prevents resizing */
+  cursor: pointer;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box; /* Prevents size changes */
+}
+
+.pagination .btn:hover {
+  background: linear-gradient(135deg, #2a5298, #1e3c72);
+  transform: none !important; /* Prevents enlargement */
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.pagination .btn:active,
+.pagination .btn:focus {
+  transform: none !important;
+  scale: 1 !important;
+  box-shadow: none !important;
+  outline: none !important;
+  border: none !important;
+}
+
+.pagination .active {
+  font-weight: bold;
+  pointer-events: none;
+  transform: none !important;
+  scale: 1 !important;
+  width: auto !important;  /* Prevent extra width */
+  height: auto !important; /* Prevent extra height */
+  display: inline-flex; /* Ensures content stays centered */
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px; /* Keep padding consistent */
+  box-sizing: border-box; /* Prevents unwanted size increase */
+
+}
+
+/* Disabled Buttons */
+.pagination .disabled {
+  background: #bbb;
+  color: #666;
+  pointer-events: none;
+  cursor: default;
+}
+
+/* First & Last Buttons */
+.pagination .first, .pagination .last {
+  background: linear-gradient(135deg, #1e88e5, #1976d2);
+}
+
+.pagination .first:hover, .pagination .last:hover {
+  background: linear-gradient(135deg, #1976d2, #1e88e5);
+}
+
+/* Previous & Next Buttons */
+.pagination .prev, .pagination .next {
+  background: linear-gradient(135deg, #ff9800, #e65100);
+}
+
+.pagination .prev:hover, .pagination .next:hover {
+  background: linear-gradient(135deg, #e65100, #ff9800);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .pagination {
+      flex-wrap: wrap;
+      gap: 6px;
+  }
+  
+  .pagination .btn {
+      padding: 10px 14px;
+      font-size: 14px;
+  }
+}

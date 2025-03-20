@@ -13,9 +13,12 @@
       {{> admin-header}}
     {{else}}
       {{> user-header}}
-      {{{body}}}
+     
     {{/if}}
 
+    <div class="content-wrapper">
+      {{{body}}}
+    </div>
     <!-- This will render the dynamic content -->
 </body>
 </html>

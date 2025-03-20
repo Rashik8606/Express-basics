@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/watching_page.css">
+    <script src="/javascripts/style.js"></script>
+    <title>Document</title>
+</head>
+<body style="background-color: #24282f;">
+    
+    {{> user-header}}  <!-- 🔥 This will include user-header.hbs -->
+
+    <section class="video">
+	<h1 style="color:white">{{movie.title}}</h1>
+	<div class="vid-wrap">
+	 <img src="https://image.tmdb.org/t/p/w500{{movie.backdrop_path}}" alt="{{movie.title}}">
+	</div>
+</section>
+<section class="post">
+	<!--http://www.azlyrics.com/lyrics/katebush/runningupthathill.html-->
+    <h3 style="color: white;">Movie Overview</h3>
+    <small style="color: gray;">Rating : {{movie.vote_average}}</small><br>
+    <small  style="color: gray;">Release Date :{{movie.release_date}}</small><br>
+    <small  style="color: gray;">Original Language : {{movie.original_language}}</small><br><br>
+    
+	<h5 style="color: white;"> {{movie.overview}}</h5>
+</section>
+
+
+<script>
+    // c/o http://stackoverflow.com/a/4904902/604040
+// i'm a dummy when it comes to js
+
+
+</script>
+</body>
+</html>
