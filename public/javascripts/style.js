@@ -1,24 +1,21 @@
-$(function () {
-	
-    var vid = $('.video');
+// Function to close the modal
+function closeModal() {
+    console.log("Closing modal..."); // Debugging log
+    let modal = document.getElementById("videoModal");
+    modal.style.display = "none";
+}
 
-var top = vid.offset().top - parseFloat(vid.css('margin-top').replace(/auto/, 0));
+// Function to open the modal (Optional, if needed)
+function openModal() {
+    let modal = document.getElementById("videoModal");
+    modal.style.display = "flex";
+}
 
-$(window).on('scroll', function(event) {
-    // what the y position of the scroll is
-    var y = $(this).scrollTop();
-
-    // whether that's below the form
-    if (y >= top) {
-        // if so, ad the fixed class
-        if ( vid.is('.aside') ) {
-            return;
-        }
-        vid.addClass('aside');
-    } else {
-        // otherwise remove it
-        vid.removeClass('aside');
+// Close modal when clicking outside the modal content
+window.onclick = function (event) {
+    let modal = document.getElementById("videoModal");
+    if (event.target === modal) {
+        console.log("Clicked outside, closing modal."); // Debugging log
+        closeModal();
     }
-});
-
-});
+};
