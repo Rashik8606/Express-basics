@@ -4,10 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const exphbs = require("express-handlebars"); 
-
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var watchRouter = require('./routes/watching_page')
+
 const db = require('./config/connection')
 var app = express();
 
@@ -61,6 +61,7 @@ db.connect((error)=>{
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/watch',watchRouter)
+
 
 // catch 404 and forward to error handle  r
 app.use(function(req, res, next) {
