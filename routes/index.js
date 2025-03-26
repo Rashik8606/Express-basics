@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
     if (page < 1) page = 1;
     const response = await axios.get("https://api.themoviedb.org/3/movie/popular", {
       params: {
-        api_key: "API_KEY",  
+        api_key: "a988fcd9e31ef8f416ad0b604672f48c",  
         language: "en-US",
         page: page,
       },

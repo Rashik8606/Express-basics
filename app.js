@@ -7,6 +7,7 @@ const exphbs = require("express-handlebars");
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var watchRouter = require('./routes/watching_page')
+const searchRouter = require('./routes/search')
 
 const db = require('./config/connection')
 var app = express();
@@ -61,6 +62,7 @@ db.connect((error)=>{
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/watch',watchRouter)
+app.use('/search',searchRouter)
 
 
 // catch 404 and forward to error handle  r
