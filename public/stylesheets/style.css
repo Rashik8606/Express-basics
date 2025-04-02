@@ -222,6 +222,8 @@ h2:after {
 }
 
 
+
+
 body {
   font-family: 'lato', sans-serif;
 }
@@ -517,4 +519,26 @@ h2 {
       padding: 10px 14px;
       font-size: 14px;
   }
+}
+
+
+/* Disable tap highlight and control transitions for navbar elements */
+.navbar .nav-link,
+.navbar .btn,
+.navbar .dropdown-toggle {
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Prevent transformations and shadows on active and focus states */
+.navbar .nav-link:active,
+.navbar .nav-link:focus,
+.navbar .btn:active,
+.navbar .btn:focus,
+.navbar .dropdown-toggle:active,
+.navbar .dropdown-toggle:focus {
+  transform: none !important;
+  scale: 1 !important;
+  box-shadow: none !important;
+  outline: none !important;
 }
