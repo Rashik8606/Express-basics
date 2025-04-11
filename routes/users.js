@@ -12,8 +12,13 @@ router.get('/', function(req, res, next) {
 router.post('/submit',async (req,res)=>{
  try {
   const {username,phonenumber,email,password} = req.body
-  const database = db.get()
+  
+  if (username || phonenumber || email || password){
+    res.status(400).send('Please fill all The Fields..')
 
+  }
+  const database = db.get()
+  
   if (!database){
     return res.status(500).send('The User Does t Created account ..')
   }
@@ -27,13 +32,14 @@ router.post('/submit',async (req,res)=>{
   })
   console.log('User inserted..'+result.insertedId)
   res.send('User data saved successfully ')
+
  }catch (error) {
   console.error('error Inserted data',error)
-  res.status(500).send('Error saving user')
- }
-
-  
-})
+  if (!res.headersSent) {
+    res.status(500).send('Error saving user');
+  }
+}
+});
 
 
 

@@ -6,22 +6,92 @@
     <title>User Creation</title>
 </head>
 <body>
-    <h2 style="color: blue;">{{title}}</h2>
-    <form action="/users/submit" method="post" style="color:white;">
-        <label for="">User name 
-             <input type="text" placeholder="User name" name="username">
-        </label><br>
-        <label for="">Phone Number
-             <input type="text" placeholder="User name" name="phonenumber">
-        </label><br>
-        <label for="">Email Adress 
-             <input type="text" placeholder="User name" name="email">
-        </label><br>
-        <label for="">Password
-            <input type="password" placeholder="Password" name="password">
-        </label><br>
-        <button type="submit">Submit</button>
-       
+      <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #24282f;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .submit-form {
+      background: #ffffff;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 25px;
+    }
+
+    .submit-label {
+      display: block;
+      margin-bottom: 18px;
+      color: #555;
+      font-weight: 500;
+    }
+
+    .submit-input {
+      width: 100%;
+      padding: 10px 12px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+      transition: border-color 0.3s ease;
+    }
+
+    .submit-input:focus {
+      outline: none;
+      border-color: #4f46e5;
+    }
+
+    .signup-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #4f46e5;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .signup-btn:hover {
+      background-color: #3730a3;
+    }
+  </style>
+    <form class="submit-form" action="/users/submit" method="post">
+        <h2>{{title}}</h2>
+        <label class="submit-label">User Name
+            <input class="submit-input" type="text" placeholder="Enter your username" name="username">
+        </label>
+        <label  class="submit-label">Phone Number
+            <input class="submit-input" type="text" placeholder="Enter your phone number" name="phonenumber">
+        </label>
+        <label  class="submit-label">Email Address
+            <input class="submit-input" type="text" placeholder="Enter your email" name="email">
+        </label>
+        <label  class="submit-label">Password
+            <input class="submit-input" type="password" placeholder="Enter your password" name="password">
+        </label>
+        <button class="signup-btn" type="submit">Sign Up</button>
     </form>
+
 </body>
 </html>
