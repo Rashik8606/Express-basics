@@ -30,7 +30,9 @@ router.get("/", async (req, res) => {
       movies: response.data.results ,
       admin:false,
       currentPage:page,
-      totalPages:totalPages});
+      totalPages:totalPages,
+      username: req.session.username,
+      profilepicture: req.session.profilepicture });
 
 
   } catch (error) {

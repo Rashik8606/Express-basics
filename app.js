@@ -8,6 +8,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var watchRouter = require('./routes/watching_page')
 const searchRouter = require('./routes/search')
+const session = require('express-session')
+
 
 const db = require('./config/connection')
 var app = express();
@@ -35,6 +37,12 @@ const hbs = exphbs.create({
     }
   }
 });
+
+app.use(session({
+  secret: 'mySecretKey',
+  resave: false,
+  saveUninitialized: true
+}))
 
 app.engine('hbs', hbs.engine);  // Use 'hbs' instance with helpers
 app.set('view engine', 'hbs');
@@ -64,6 +72,12 @@ app.use('/users', usersRouter);
 app.use('/watch',watchRouter)
 app.use('/search',searchRouter)
 
+
+
+// This will help profile section 
+
+app.use('/upload', express.static('upload'));
+app.use('/images', express.static('public/images'));
 
 // catch 404 and forward to error handle  r
 app.use(function(req, res, next) {

@@ -138,18 +138,19 @@
                   aria-expanded="false"
                 >
                   <img
-                    src="https://mdbootstrap.com/img/Photos/Avatars/img%20(2).jpg"
+                    src="{{#if profilepicture}}/upload/{{profilepicture}}{{else}}/images/default-avatar.png.jpg{{/if}}"
                     class="rounded-circle img-fluid"
-                    height="25"
-                    width="25"
+                    height="30"
+                    width="30"
                   />
+                
                 </a>
                 <!-- Dropdown menu -->
                 <ul
                   class="dropdown-menu dropdown-menu-end p-1"
                   aria-labelledby="navbarDropdown"
                 >
-                  <li class="my-2 d-flex align-items-center"><img
+                  {{!-- <li class="my-2 d-flex align-items-center"><img
                       src="https://mdbootstrap.com/img/Photos/Avatars/img%20(4).jpg"
                       class="rounded-circle img-fluid me-1"
                       height="25"
@@ -160,14 +161,14 @@
                       class="rounded-circle img-fluid me-1"
                       height="25"
                       width="25"
-                    /><span> User 2</span></li>
+                    /><span> User 2</span></li> --}}
                   <li><a class="dropdown-item" href="#">Manage Profiles</a></li>
                   <li>
                     <hr class="dropdown-divider" />
                   </li>
                   <li><a class="dropdown-item" href="/users">Your Account</a></li>
                   <li><a class="dropdown-item" href="#">Help</a></li>
-                  <li><a class="dropdown-item" href="#">Log Out</a></li>
+                  <li><a class="dropdown-item" href="/logout">Log Out</a></li>
                 </ul>
               </li>
             </ul>
