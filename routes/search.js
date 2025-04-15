@@ -31,7 +31,11 @@ router.get('/',async (req,res)=>{
                 language: "en-US",
             }
         });
-        res.render("search_result", { movie: movieDetails.data })
+        res.render("search_result", { 
+            movie: movieDetails.data ,
+            username : req.session.username,
+            profilepicture : req.session.profilepicture
+        })
     }catch(error){
         console.log('error fetching data ',error.response?.data||error.message)
         res.status(500).send('error fetching movies details')

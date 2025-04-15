@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var watchRouter = require('./routes/watching_page')
 const searchRouter = require('./routes/search')
+var recentlyAdded = require('./routes/recently_added')
 const session = require('express-session')
 
 
@@ -72,6 +73,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/watch',watchRouter)
 app.use('/search',searchRouter)
+app.use('/recently',recentlyAdded)
 
 
 

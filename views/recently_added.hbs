@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recently Added</title>
+</head>
+<body>
+    <h2 class="my-4">Recently Viewed</h2>
+<div class="row">
+  {{#each recentlyViewed}}
+  <div class="col-md-3 mb-4">
+    <div class="card h-100">
+      <a href="/watching/{{this.id}}">
+        <img src="https://image.tmdb.org/t/p/w500{{this.poster_path}}" class="card-img-top" alt="{{this.title}}">
+      </a>
+      <div class="card-body">
+        <h5 class="card-title">{{this.title}}</h5>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
+
+</body>
+</html>

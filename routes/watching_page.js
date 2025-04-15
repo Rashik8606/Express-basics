@@ -12,7 +12,27 @@ router.get('/:id',async (req,res)=>{
             language : 'en-US',
         }
     })
-    res.render('watching_page',{title:response.data.title,movie:response.data})
+    if (!req.session.recentlyViewed) {
+        req.session.recentlyViewed = []
+    }
+    req.session.recentlyViewed = req.session.recentlyViewed.filter(item => item.id !== movieId)
+
+    req.session.recentlyViewed.unshift({
+        id : movieId,
+        title : response.data.title,
+        poster_path : response.data.poster_path
+    })
+    if (req.session.recentlyViewed.length > 10){
+        req.session.recentlyViewed.pop( )
+    }
+
+
+    res.render('watching_page',{
+        title:response.data.title,
+        movie:response.data, 
+        username : req.session.username,
+        profilepicture : req.session.profilepicture
+    })
    }catch (error) {
     console.log('Error fetching details',error.response?.data || error.message)
     res.status(500).send('Error fetching movie details')

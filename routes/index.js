@@ -13,11 +13,11 @@ router.use(bodyParser.json());
 
 router.get("/", async (req, res) => {
   try {
-    const page =  parseInt (req.query.page) || 1
+    let page =  parseInt (req.query.page) || 1
     if (page < 1) page = 1;
     const response = await axios.get("https://api.themoviedb.org/3/movie/popular", {
       params: {
-        api_key: "API_KEY",  
+        api_key: "a988fcd9e31ef8f416ad0b604672f48c",  
         language: "en-US",
         page: page,
       },
@@ -36,6 +36,10 @@ router.get("/", async (req, res) => {
 
 
   } catch (error) {
+    if (error.code === 'ECONNRESET') {
+      console.error("Connection to TMDB was reset.");
+      return res.status(502).send("TMDB service temporarily unavailable. Please try again.");
+    }
     console.error("Error fetching movies:", error.response?.data || error.message);
     res.status(500).send("Error fetching movies.");
   }
