@@ -43,5 +43,20 @@ router.get("/", async (req, res) => {
 
 
 
+router.get('/logout', (req, res) => {
+  console.log("Logout route hit");
+  if (req.session){
+    req.session.destroy((err) => {
+      if (err) {
+        return res.status(500).send('Error logging out');
+      }
+      res.clearCookie('connect.sid');
+      res.redirect('/users');
+    })
+  }else{
+    res.redirect('/users')
+  }
+});
 
 module.exports = router;
+

@@ -125,13 +125,16 @@ router.post('/login',async (req,res)=> {
 
 // LogOut Section
 
-router.get('/logout', (req,res) =>{
-  req.session.destroy((err)=>{
-    if(err){
-      return res.status(500).send('Error logging out')
-    }
-    res.redirect('/login')
-  })
-})
+// router.get('/logout', (req,res) =>{
+//   if(!req.session){
+//     return res.redirect('/login')
+//   }
+//   req.session.destroy((err)=>{
+//     if(err){
+//       return res.status(500).send('Error logging out')
+//     }
+//     res.redirect('/login')
+//   })
+// })
 
 module.exports = router;

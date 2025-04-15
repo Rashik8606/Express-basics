@@ -41,7 +41,8 @@ const hbs = exphbs.create({
 app.use(session({
   secret: 'mySecretKey',
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
+  cookie: { secure: false } 
 }))
 
 app.engine('hbs', hbs.engine);  // Use 'hbs' instance with helpers
