@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var db = require('../config/connection')
 const multer = require('multer')
+const { ObjectId } = require('mongodb');
 
 
 
@@ -76,7 +77,7 @@ router.get('/index/:id',async (req,res)=>{
     const userCollection = database.collection('users')
     const userId = req.params.id
 
-    const user = await userCollection.findOne({_id: new db.ObjectId(userId)})
+    const user = await userCollection.findOne({_id: new ObjectId(userId)})
 
     if(!user){
       return res.status(404).send('User Not found')

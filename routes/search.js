@@ -31,10 +31,27 @@ router.get('/',async (req,res)=>{
                 language: "en-US",
             }
         });
+        if (!req.session.recentlyViewed){
+            req.session.recentlyViewed = []
+        }
+        req.session.recentlyViewed = req.session.recentlyViewed.filter(item=>item.id !== firstMovie.id)
+
+        req.session.recentlyViewed.unshift({
+            id : firstMovie.id,
+            title : firstMovie.title,
+            poster_path : firstMovie.poster_path
+        })
+
+        if (req.session.recentlyViewed.length > 10) {
+            req.session.recentlyViewed.pop()
+        }
+        
+
         res.render("search_result", { 
             movie: movieDetails.data ,
             username : req.session.username,
-            profilepicture : req.session.profilepicture
+            profilepicture : req.session.profilepicture,
+            recentlyViewed : req.session.recentlyViewed
         })
     }catch(error){
         console.log('error fetching data ',error.response?.data||error.message)
