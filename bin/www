@@ -4,8 +4,9 @@ var app = require('../app');
 var debug = require('debug')('practiceexpress:server');
 var http = require('http');
 
-var port = normalizePort(process.env.PORT || '8080');
+const port = normalizePort(process.env.PORT || '8080');
 app.set('port', port);
+console.log('Running on port:', port);
 
 var server = http.createServer(app);
 
