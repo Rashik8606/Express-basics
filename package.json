@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "node ./bin/www",
     "compile:pug": "pug views/ --out public/",
     "compile:scss": "sass scss/style.scss public/stylesheets/style.css",
     "watch:pug": "nodemon --watch views -e pug --exec 'npm run compile:pug'",
