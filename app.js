@@ -11,11 +11,10 @@ const searchRouter = require('./routes/search')
 var recentlyAdded = require('./routes/recently_added')
 const session = require('express-session')
 
-
 const db = require('./config/connection')
 var app = express();
 
-
+// Set up Handlebars view engine with helpers
 const hbs = exphbs.create({
   extname: ".hbs",
   defaultLayout: "main",
@@ -46,10 +45,9 @@ app.use(session({
   cookie: { secure: false } 
 }))
 
-app.engine('hbs', hbs.engine);  // Use 'hbs' instance with helpers
+app.engine('hbs', hbs.engine);  
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
-
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -57,47 +55,35 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-db.connect((error)=>{
+db.connect((error) => {
   if (error){
     console.log('Connection Error...'+error)
     process.exit(1)
-  }else{
-    console.log('DataBase Conneted...')
+  } else {
+    console.log('DataBase Connected...')
   }
-  
 })
-
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/watch',watchRouter)
-app.use('/search',searchRouter)
-app.use('/recently',recentlyAdded)
-
-
-
-// This will help profile section 
+app.use('/watch', watchRouter);
+app.use('/search', searchRouter);
+app.use('/recently', recentlyAdded);
 
 app.use('/upload', express.static('upload'));
 app.use('/images', express.static('public/images'));
 
-// catch 404 and forward to error handle  r
+// catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
 
 // error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
   res.status(err.status || 500);
   res.render('error');
-  
 });
-
 
 module.exports = app;
