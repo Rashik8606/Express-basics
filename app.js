@@ -98,8 +98,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
   
 });
-server.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+
 
 module.exports = app;
