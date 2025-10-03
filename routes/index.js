@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
     if (page < 1) page = 1;
     const response = await axios.get("https://api.themoviedb.org/3/movie/popular", {
       params: {
-        api_key: "a988fcd9e31ef8f416ad0b604672f48c",  
+        api_key: "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhOTg4ZmNkOWUzMWVmOGY0MTZhZDBiNjA0NjcyZjQ4YyIsIm5iZiI6MTc0MTk0OTU4Ny42MjIwMDAyLCJzdWIiOiI2N2Q0MGE5MzYyZTdkMjMzNjM1M2I3ZjEiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.Lrc85f8aBnYxJ2914pvwIelaPTy1j2QkhQAWsJgI18I",  
         language: "en-US",
         page: page,
       },
